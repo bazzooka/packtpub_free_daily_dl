@@ -7,10 +7,10 @@ request = request.defaults({
     jar: true
 });
 
-var loginDetails = { email: "robertauuuuu@yopmail.com", password: "123456", op: "Login", form_id: "packt_user_login_form", form_build_id: ""},
+var loginDetails = { email: "xxxxxxxxxx", password: "xxxxxxxxxx", op: "Login", form_id: "packt_user_login_form", form_build_id: ""},
+    extension = 'pdf', // Could be {epub,mobi}
     url = 'https://www.packtpub.com/packt/offers/free-learning',
     downloadUrl = 'https://www.packtpub.com/ebook_download/',
-    extension = 'pdf', // Could be {epub,mobi}
     getBookUrl = "",
     bookName = '';
 
