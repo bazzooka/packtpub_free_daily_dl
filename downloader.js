@@ -16,7 +16,8 @@ var loginInformations = { email: "xxxxxxxxxx", password: "xxxxxxxxxx", op: "Logi
 
 request(url, function(err, res, body) {
     if(err) {
-        callback.call(null, new Error('Request failed'));
+        throw (new Error('Request failed'));
+        //callback.call(null, new Error('Request failed'));
         return;
     }
 
@@ -48,9 +49,16 @@ request(url, function(err, res, body) {
         console.log("Begining of the download of " + finalUrl);
 
         // Download the ebook :)
-        request.get({url: finalUrl, encoding: 'binary'}, function (err, response, body) {
-            fs.writeFile(bookName + "." + extension, body, 'binary', function(){
-                console.log("You have a new book :)");
+        console.log("Final URL : ", finalUrl);
+
+        request('https://www.packtpub.com'+bookUrl, function(err, res, body) {
+            if(err){
+                throw new Error("bookUrl error");
+            }
+            request.get({url: finalUrl, encoding: 'binary'}, function (err, response, body) {
+                fs.writeFile(bookName + "." + extension, body, 'binary', function () {
+                    console.log("You have a new book :)");
+                });
             });
         });
     });
